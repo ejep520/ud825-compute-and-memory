@@ -18,9 +18,10 @@ package com.example.android.mobileperf.compute;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.android.mobileperf.compute.databinding.ActivityMainBinding;
 
 /** Just a "Table of Contents" Activity to springboard you into the various exercises.  Seriously,
  * there is NOTHING interesting here.  Why are you still reading?  Why must you continue to hang
@@ -28,23 +29,22 @@ import android.widget.Button;
  */
 public class MainActivity extends Activity {
 
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        addButton(CachingActivity.class, "Batching and caching", rootView);
+        addButton(CachingActivity.class, "Batching and caching", binding.mainRootview);
     }
 
-    public void addButton(final Class destination, String description, ViewGroup parent) {
+    public void addButton(final Class<?> destination, String description, ViewGroup parent) {
         Button button = new Button(this);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent problemIntent = new Intent(MainActivity.this, destination);
-                startActivity(problemIntent);
-            }
+        button.setOnClickListener(v -> {
+            Intent problemIntent = new Intent(MainActivity.this, destination);
+            startActivity(problemIntent);
         });
 
         button.setText(description);
