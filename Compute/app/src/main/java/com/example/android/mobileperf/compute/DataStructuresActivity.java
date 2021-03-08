@@ -19,37 +19,34 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Trace;
 import android.util.Log;
-import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
+
+import com.example.android.mobileperf.compute.databinding.ActivityDataStructuresBinding;
 
 import java.util.Arrays;
 
 
 public class DataStructuresActivity extends Activity {
 
+    private ActivityDataStructuresBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_structures);
+        binding = ActivityDataStructuresBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         Button dumpCountriesButton = (Button) findViewById(R.id.ds_button_dostuff);
-        dumpCountriesButton.setText("Dump popular numbers to log");
+        binding.dsButtonDostuff.setText("Dump popular numbers to log");
 
-        dumpCountriesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dumpPopularRandomNumbersByRank();
-            }
-        });
+        dumpCountriesButton.setOnClickListener(v -> dumpPopularRandomNumbersByRank());
 
-        // It's much easier to see how your decisions affect framerate when there's something
+        // It's much easier to see how your decisions affect frame rate when there's something
         // changing on screen.  For entirely serious, educational purposes, a dancing pirate
         // will be included with this exercise.
-        WebView webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.loadUrl("file:///android_asset/shiver_me_timbers.gif");
+        binding.webview.getSettings().setUseWideViewPort(true);
+        binding.webview.getSettings().setLoadWithOverviewMode(true);
+        binding.webview.loadUrl("file:///android_asset/shiver_me_timbers.gif");
     }
 
     /**
@@ -66,8 +63,7 @@ public class DataStructuresActivity extends Activity {
         // take the random number in sorted order, and find its index in the array
         // that's sorted by popularity.  The index is the rank, so report that.  Easy and efficient!
         // Except that it's... you know... It's not.
-        for (int i = 0; i < sortedNumbers.length; i++) {
-            Integer currentNumber = sortedNumbers[i];
+        for (Integer currentNumber : sortedNumbers) {
             for (int j = 0; j < SampleData.coolestRandomNumbers.length; j++) {
                 if (currentNumber.compareTo(SampleData.coolestRandomNumbers[j]) == 0) {
                     Log.i("Popularity Dump", currentNumber + ": #" + j);
