@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.example.android.mobileperf.compute.databinding.ActivityBusyUithreadBinding;
@@ -98,6 +99,12 @@ public class BusyUIThreadActivity extends Activity {
                 // apply new pixel color to output bitmap
                 sepiaBitmap.setPixel(x, y, Color.argb(alpha, outRed, outGreen, outBlue));
             }
+            return sepiaBitmap;
+        }
+
+        protected void onPostExecute(Bitmap sepiaBitmap) {
+            ImageView imageView = (ImageView) findViewById(R.id.busyui_imageview);
+            imageView.setImageBitmap(sepiaBitmap);
         }
         return sepiaBitmap;
     }
