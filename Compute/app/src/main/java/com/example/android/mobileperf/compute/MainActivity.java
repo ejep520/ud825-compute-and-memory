@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
         addButton(DataStructuresActivity.class,
                 getText(R.string.data_structure_button),
                 binding.mainRootview);
+        addButton(MemoryLeakActivity.class, "Memory leaks", rootView);
     }
 
     public void addButton(final Class<?> destination, CharSequence description,
