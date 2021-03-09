@@ -26,5 +26,4 @@ public class SampleData {
         for (int i=0; i<3000; i++) {
             coolestRandomNumbers.put(randomGenerator.nextInt(), i);
         }
-    }
-}
+    }}
