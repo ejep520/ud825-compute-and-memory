@@ -45,9 +45,9 @@ public class MainActivity extends Activity {
         addButton(BusyUIThreadActivity.class,
                 getText(R.string.busy_ui_button),
                 binding.mainRootview);
-        addButton(BusyUIThreadActivity.class,
+        addButton(DataStructuresActivity.class,
                 getText(R.string.data_structure_button),
-                binding.mainRootView);
+                binding.mainRootview);
     }
 
     public void addButton(final Class<?> destination, CharSequence description,

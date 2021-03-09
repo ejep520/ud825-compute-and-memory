@@ -24,4 +24,5 @@
     <string name="busy_ui_button">Slow onClick handler</string>
     <string name="busy_ui_load">Display an image.</string>
     <string name="title_activity_data_structures">Data Structures Exercise</string>
+    <string name="data_structure_button">Data Structures</string>
 </resources>
