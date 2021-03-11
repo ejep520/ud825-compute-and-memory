@@ -33,7 +33,7 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:id="@+id/customView"
-        android:background="#ff0000"
+        android:background="@color/trueRed"
         android:layout_below="@id/memleak_intro_text" />
 
 </RelativeLayout>

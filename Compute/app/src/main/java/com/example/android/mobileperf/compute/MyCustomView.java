@@ -22,7 +22,7 @@ import android.view.View;
 public class MyCustomView extends View {
 
     public interface MyListener {
-        public void someListenerCallback();
+        void someListenerCallback();
     }
 
     /**
@@ -48,10 +48,5 @@ public class MyCustomView extends View {
         init();
     }
 
-    private MyListener mListener = new MyListener() {
-        @Override
-        public void someListenerCallback() {
-            System.out.println("Someone called me!");
-        }
-    };
+    private final MyListener mListener = () -> System.out.println("Someone called me!");
 }

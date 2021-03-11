@@ -15,15 +15,16 @@
  */
 package com.example.android.mobileperf.compute;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * The most completely unremarkable Activity code you'll probably ever see.  How could this hide
  * a memory leak?  HOW?
  */
-public class MemoryLeakActivity extends Activity {
+public class MemoryLeakActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

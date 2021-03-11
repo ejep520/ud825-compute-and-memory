@@ -20,7 +20,7 @@ import java.util.Random;
 
 
 public class SampleData {
-    public static HashMap<Integer, Integer> coolestRandomNumbers = new HashMap<>();
+    public static final HashMap<Integer, Integer> coolestRandomNumbers = new HashMap<>();
     static {
         Random randomGenerator = new Random();
         for (int i=0; i<3000; i++) {

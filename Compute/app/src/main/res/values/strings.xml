@@ -22,5 +22,8 @@
     <string name="title_activity_busy_uithread">Busy UI Thread Exercise</string>
     <string name="title_activity_data_structures">Data Structures Exercise</string>
     <string name="title_activity_memory_leak">Memory Leak Exercise</string>
-
+    <string name="data_structures_button">Dump popular numbers to log</string>
+    <string name="busy_ui_button">Display an image.</string>
+    <string name="caching_button">Compute some Fibonacci numbers.</string>
+    <string name="activity_image_view_cd">It\'s an android!</string>
 </resources>

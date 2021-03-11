@@ -15,40 +15,47 @@
  */
 package com.example.android.mobileperf.compute;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.android.mobileperf.compute.databinding.ActivityMainBinding;
 
 /** Just a "Table of Contents" Activity to springboard you into the various exercises.  Seriously,
  * there is NOTHING interesting here.  Why are you still reading?  Why must you continue to hang
  * upon my every word?  WHY???
  */
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        addButton(CachingActivity.class, "Batching and caching", rootView);
-        addButton(BusyUIThreadActivity.class, "Slow onClick handler", rootView);
-        addButton(DataStructuresActivity.class, "Data structure selection", rootView);
-
-        addButton(MemoryLeakActivity.class, "Memory leaks", rootView);
+        addButton(CachingActivity.class, "Batching and caching", binding.mainRootview);
+        addButton(
+                BusyUIThreadActivity.class,
+                "Slow onClick handler",
+                binding.mainRootview);
+        addButton(
+                DataStructuresActivity.class,
+                "Data structure selection",
+                binding.mainRootview);
+        addButton(MemoryLeakActivity.class, "Memory leaks", binding.mainRootview);
     }
 
-    public void addButton(final Class destination, String description, ViewGroup parent) {
+    public void addButton(final Class<?> destination, String description, ViewGroup parent) {
         Button button = new Button(this);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent problemIntent = new Intent(MainActivity.this, destination);
-                startActivity(problemIntent);
-            }
+        button.setOnClickListener(v -> {
+            Intent problemIntent = new Intent(MainActivity.this, destination);
+            startActivity(problemIntent);
         });
 
         button.setText(description);

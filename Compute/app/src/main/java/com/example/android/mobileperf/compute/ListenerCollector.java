@@ -28,7 +28,7 @@ import java.util.WeakHashMap;
 public class ListenerCollector {
     // A common case is to want to store all the listeners for a particular type of view
     // somewhere.  Harmless AND convenient.  Or... is it? o_0
-    static private WeakHashMap<View, MyListener> sListeners = new WeakHashMap<View,  MyListener>();
+    static private final WeakHashMap<View, MyListener> sListeners = new WeakHashMap<>();
 
     public void setListener(View view, MyListener listener) {
         sListeners.put(view, listener);
